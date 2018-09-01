@@ -41,7 +41,7 @@ public class NiceApplication {
 	 * @return
 	 */
 	@GetMapping(value = "/top-ten",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<RecordResponse> getTopTen(@PathParam("idApplication") int idApplication, @PathParam("level") int level){
+	public List<RecordResponse> getTopTen(@PathParam("idApplication") String idApplication, @PathParam("level") int level){
 		return recordService.getTopTen(idApplication,level);
 	}
 
@@ -53,7 +53,7 @@ public class NiceApplication {
 	 * @return
 	 */
 	@GetMapping(value = "/previous-ten",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<RecordResponse> getPreviousTen(@PathParam("idApplication") int idApplication,@PathParam("level") int level,@PathParam("score")int score){
+	public List<RecordResponse> getPreviousTen(@PathParam("idApplication") String idApplication,@PathParam("level") int level,@PathParam("score")int score){
 		return recordService.getPreviousTen(idApplication,level,score);
 	}
 

@@ -8,12 +8,14 @@ import java.util.List;
 
 public interface RecordRepository  extends MongoRepository<Record,String>{
 
-    int countByIdUserAndApplicationAndLevel(String idUser,int idApplication,int level);
+    int countByIdUserAndApplicationAndLevel(String idUser,String idApplication,int level);
 
-    Record findByIdUserAndApplicationAndLevel(String idUser, int application, int level);
+    Record findByIdUserAndApplicationAndLevel(String idUser, String application, int level);
 
-    List<Record> findAllByApplicationAndLevelOrderByScoreDesc(int application, int level, Pageable pageable);
+    List<Record> findAllByApplicationAndLevelOrderByScoreDesc(String application, int level, Pageable pageable);
 
-    List<Record> findAllByApplicationAndLevelAndScoreLessThanEqualOrderByScoreDesc(int idApplication,int level,int Score,Pageable pageable);
+    List<Record> findAllByApplicationAndLevelAndScoreLessThanEqualOrderByScoreDesc(String idApplication,int level,int Score,Pageable pageable);
+
+    int countByApplicationAndLevelAndScoreLessThanEqual(String idApplication, int level,int Score);
 
 }

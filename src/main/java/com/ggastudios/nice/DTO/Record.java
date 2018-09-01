@@ -13,7 +13,7 @@ public class Record {
     private String id;
 
     @NotNull
-    private int application;
+    private String application;
 
     @NotNull
     private int level;
@@ -35,11 +35,11 @@ public class Record {
         this.id = id;
     }
 
-    public int getApplication() {
+    public String getApplication() {
         return application;
     }
 
-    public void setApplication(int application) {
+    public void setApplication(String application) {
         this.application = application;
     }
 

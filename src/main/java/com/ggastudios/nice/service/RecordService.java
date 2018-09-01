@@ -26,13 +26,13 @@ public class RecordService {
         return new RecordResponse(recordRepository.save(record));
     }
 
-    public List<RecordResponse> getTopTen(int idApplication, int level){
+    public List<RecordResponse> getTopTen(String idApplication, int level){
 
         List<Record> recordList = recordRepository.findAllByApplicationAndLevelOrderByScoreDesc(idApplication,level,PageRequest.of(0,10));
         return listRecordToListRecordResponse(recordList);
     }
 
-    public List<RecordResponse> getPreviousTen( int idApplication, int level,int score){
+    public List<RecordResponse> getPreviousTen( String idApplication, int level,int score){
 
         List<Record> recordList = recordRepository.findAllByApplicationAndLevelAndScoreLessThanEqualOrderByScoreDesc(idApplication,level,score,PageRequest.of(0,10));
         return listRecordToListRecordResponse(recordList);
