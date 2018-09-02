@@ -32,9 +32,14 @@ public class RecordService {
         return listRecordToListRecordResponse(recordList);
     }
 
-    public List<RecordResponse> getPreviousTen( String idApplication, int level,int score){
+    public List<RecordResponse> getPreviousTen( Record record){
 
-        List<Record> recordList = recordRepository.findAllByApplicationAndLevelAndScoreLessThanEqualOrderByScoreDesc(idApplication,level,score,PageRequest.of(0,10));
+        List<Record> recordList = recordRepository.findAllByApplicationAndLevelAndScoreLessThanEqualOrderByScoreDesc(record.getApplication(),record.getLevel(),record.getScore(),PageRequest.of(0,10));
+        int position = recordRepository.countByIdUserAndApplicationAndLevel(record.getIdUser(),record.getApplication(),record.getLevel());
+        List<RecordResponse> responseRecord = listRecordToListRecordResponse(recordList);
+        for (RecordResponse r : responseRecord){
+            r.setPosition(position++);
+        }
         return listRecordToListRecordResponse(recordList);
     }
 

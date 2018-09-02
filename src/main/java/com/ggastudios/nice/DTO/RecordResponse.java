@@ -6,7 +6,7 @@ public class RecordResponse {
 
     private int score;
 
-    private String position;
+    private int position;
 
     public RecordResponse(Record record) {
         this.name = record.getName();
@@ -29,11 +29,11 @@ public class RecordResponse {
         this.score = score;
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 }

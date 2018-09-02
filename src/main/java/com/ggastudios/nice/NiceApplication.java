@@ -47,14 +47,12 @@ public class NiceApplication {
 
 	/**
 	 * Devuelve las 10 puntuaciones anteriores a la recibida.
-	 * @param idApplication identificador de aplicacion
-	 * @param level nivel de juego
-	 * @param score puntuacion
+	 * @param record
 	 * @return
 	 */
 	@GetMapping(value = "/previous-ten",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<RecordResponse> getPreviousTen(@PathParam("idApplication") String idApplication,@PathParam("level") int level,@PathParam("score")int score){
-		return recordService.getPreviousTen(idApplication,level,score);
+	public List<RecordResponse> getPreviousTen(@RequestBody Record record){
+		return recordService.getPreviousTen(record);
 	}
 
 }
