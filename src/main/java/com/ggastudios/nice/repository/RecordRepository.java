@@ -1,6 +1,5 @@
 package com.ggastudios.nice.repository;
 
-import com.ggastudios.nice.DTO.Record;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -14,8 +13,13 @@ public interface RecordRepository  extends MongoRepository<Record,String>{
 
     List<Record> findAllByApplicationAndLevelOrderByScoreDesc(String application, int level, Pageable pageable);
 
-    List<Record> findAllByApplicationAndLevelAndScoreLessThanEqualOrderByScoreDesc(String idApplication,int level,int Score,Pageable pageable);
+    List<Record> findAllByApplicationAndLevelAndScoreGreaterThanEqualOrderByScoreDesc(String idApplication,int level,
+            int Score,Pageable pageable);
 
-    int countByApplicationAndLevelAndScoreLessThanEqual(String idApplication, int level,int Score);
+    List<Record> findAllByApplicationAndLevelAndScoreLessThanOrderByScoreDesc(String idApplication,int level,int
+            Score, Pageable pageable);
+
+    int countByApplicationAndLevelAndScoreGreaterThanEqualOrderByDateUpdateDesc(String idApplication, int level,int
+            Score);
 
 }
